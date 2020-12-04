@@ -29,6 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.92">
+    </ListView>
 
         <EditText
             android:id="@+id/etnumber"
@@ -47,7 +48,18 @@
             android:layout_height="32dp"
             android:hint="Enter Name"
             android:textSize="20sp" />
-    </ListView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floating_action_button_fab_with_listview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:clickable="true"
+        android:src="@drawable/ic_plus"
+        app:elevation="4dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,6 +37,16 @@ ArrayList<LvItem>arrayList=new ArrayList<>();
                 lvItem.setName(name);
                 lvItem.setNumber(number);
             }
+
+
+            String[] lvItem = new String[]{"ListView Example", "ListView with FAB", "FAB with Simple List View in Android", "ListView Adapter with Floating Action Button",
+                    "Android FAB and ListView Example", "List View and FAB Source Code", "FAB and List View Array", "Floating Action Button FAB", "ListView Example",
+                    "ListView with FAB", "FAB with Simple List View in Android", "ListView Adapter with Floating Action Button",
+                    "Android FAB and ListView Example", "List View and FAB Source Code", "FAB and List View Array"
+            };
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, listItwms);
+        listView.setAdapter(adapter);
         });
     }
 }
