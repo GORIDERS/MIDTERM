@@ -2,18 +2,22 @@ package com.example.midterm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-EditText etname,etnumber;
+    FloatingActionButton fab;
+
 Button button;
-String name,number;
+String name,number,gender;
 ListView listView;
 ArrayList<LvItem>arrayList=new ArrayList<>();
 
@@ -22,8 +26,20 @@ ArrayList<LvItem>arrayList=new ArrayList<>();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        etname = findViewById(R.id.etname);
-        etnumber = findViewById(R.id.etnumber);
+
+        fab = findViewById(R.id.flot);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(MainActivity.this);
+                dialog.setContentView(R.layout.fabitems);
+                final EditText etname = dialog.findViewById(R.id.etname);
+                final EditText etgender = dialog.findViewById(R.id.etgender);
+                final EditText etnumber = dialog.findViewById(R.id.etnumber);
+                Button button = dialog.findViewById(R.id.button);
+
+
         button = findViewById(R.id.button);
         listView = findViewById(R.id.lv);
 
@@ -32,21 +48,19 @@ ArrayList<LvItem>arrayList=new ArrayList<>();
             public void onClick(View v) {
                 name = etname.getText().toString();
                 number = etnumber.getText().toString();
+                gender = etgender.getText().toString();
 
                 LvItem lvItem = new LvItem();
                 lvItem.setName(name);
                 lvItem.setNumber(number);
-            }
+                lvItem.setGender(gender);
+                arrayList.add(lvItem);
 
+                ContectAdapter contectAdapter = new ContectAdapter(arrayList, MainActivity.this);
+                listView.setAdapter(contectAdapter);
+            });
 
-            String[] lvItem = new String[]{"ListView Example", "ListView with FAB", "FAB with Simple List View in Android", "ListView Adapter with Floating Action Button",
-                    "Android FAB and ListView Example", "List View and FAB Source Code", "FAB and List View Array", "Floating Action Button FAB", "ListView Example",
-                    "ListView with FAB", "FAB with Simple List View in Android", "ListView Adapter with Floating Action Button",
-                    "Android FAB and ListView Example", "List View and FAB Source Code", "FAB and List View Array"
-            };
-
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, listItwms);
-        listView.setAdapter(adapter);
+        dialog.show();
         });
     }
 }
